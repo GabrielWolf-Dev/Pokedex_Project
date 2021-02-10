@@ -1,0 +1,18 @@
+.linkHome {
+    width: 40px;
+    height: 40px;
+    background-color: #5CC8F2;
+    border-radius: 50%;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.linkHome__link{                                                                                                                      
+    text-decoration: none;
+    font-size: 22px;
+    color: white;
+}
