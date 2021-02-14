@@ -1,2 +1,2 @@
-import CardPokemons from './CardPokemons';
-export default CardPokemons;
+import SearchPokemon from './CardPokemons';
+export default SearchPokemon;

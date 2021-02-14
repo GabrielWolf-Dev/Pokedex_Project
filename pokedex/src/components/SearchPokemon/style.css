@@ -4,13 +4,14 @@ form {
     height: 40px;
     margin: 48px auto 32px auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: ;
     padding: 0 2%;
 }
 
 .search {
-    width: 60%;
+    width: 100%;
     display: flex;
+    justify-content: center;
 }
 
 .search input[type='text'] {
@@ -20,42 +21,5 @@ form {
     padding-left: 10px;
     border: 1px solid #333333;
     outline: none;
-    border-top-left-radius: 12px;
-    border-bottom-left-radius: 12px;
-}
-
-.search__iconBox, .typePokemon__iconBox {
-    width: 100%;
-    max-width: 40px;
-    height: 40px;
-    border-top-right-radius: 12px;
-    border-bottom-right-radius: 12px;
-    background-color: #5CC8F2;
-    cursor: pointer;
-    position: relative;
-}
-
-.search__icon, .typePokemon__icon {
-    color: white;
-    font-size: 16px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.typePokemon{
-    width: 30%;
-    display: flex;
-}
-
-.typePokemon input[type='text'] {
-    width: 100%;
-    max-width: 80px;
-    padding-left: 10px;
-    height: inherit;
-    border: 1px solid #333333;
-    outline: none;
-    border-top-left-radius: 12px;
-    border-bottom-left-radius: 12px;
+    border-radius: 12px;
 }
