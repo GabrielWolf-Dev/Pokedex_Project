@@ -1,47 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as heartBorder } from '@fortawesome/free-regular-svg-icons';
 
 import './style.css';
 
 export default function CardPokemons(){
+    const [pokemons, setPokemons] = useState([]);
+    const [spritesPoke, setSpritesPoke] = useState([]);
+    const sprites = [];
+    function showSprites(){
+        for(let i= 1; i <= pokemons.length; i++){
+            sprites.push(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`);
+        }
+    }
+    
+    useEffect(() => {
+        setSpritesPoke(sprites);   
+    }, []);
 
+    useEffect(async () => {
+        setTimeout(showSprites(), 300);
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon`);
+        const data = await response.json();
+        data.results.map(pokemon => pokemon.sprite = spritesPoke.shift());
+
+        setPokemons(data.results);
+    }, []);
+
+    console.log(pokemons);
     return(
         <>
             <section className="cardsPokemons">
                 <div className="cardsPokemons__space">
-                    <div className="cardsPokemons__card">
-                        <FontAwesomeIcon className="card__iconFavorite" icon={heartBorder} />
-                        <div className="card__borderImg">
-                            <img src="https://cdn.pixabay.com/photo/2016/07/23/02/32/magikarp-1536179_960_720.png" alt="Pokemon" />
-                        </div>
-                        <div className="card__content">
-                            <h2>Nome do Pokemon</h2>
-                            <p>water</p>
-                        </div>
-                    </div>
-
-                    <div className="cardsPokemons__card">
-                        <FontAwesomeIcon className="card__iconFavorite" icon={heartBorder} />
-                        <div className="card__borderImg">
-                            <img src="https://cdn.pixabay.com/photo/2016/07/23/02/32/magikarp-1536179_960_720.png" alt="Pokemon" />
-                        </div>
-                        <div className="card__content">
-                            <h2>Nome do Pokemon</h2>
-                            <p>water</p>
-                        </div>
-                    </div>
-
-                    <div className="cardsPokemons__card">
-                        <FontAwesomeIcon className="card__iconFavorite" icon={heartBorder} />
-                        <div className="card__borderImg">
-                            <img src="https://cdn.pixabay.com/photo/2016/07/23/02/32/magikarp-1536179_960_720.png" alt="Pokemon" />
-                        </div>
-                        <div className="card__content">
-                            <h2>Nome do Pokemon</h2>
-                            <p>water</p>
-                        </div>
-                    </div>
+                    {pokemons.map((pokemon, index) => {
+                        return (
+                            <div className="cardsPokemons__card" key={index}>
+                                    <FontAwesomeIcon className="card__iconFavorite" icon={heartBorder} />
+                                <div className="card__borderImg">
+                                    <img src={pokemon.sprite} alt=""/>
+                                </div>
+                                <div className="card__content">
+                                    <h2>{pokemon.name}</h2>
+                                    <p></p>
+                                </div>
+                            </div> 
+                        );
+                    })}
                 </div>
             </section>
         
