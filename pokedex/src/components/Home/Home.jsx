@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart as HeartFilled } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as filledHeart } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 import './style.css';
@@ -35,7 +35,7 @@ export default function Home(){
         <>
             <div className="linkFavorites">
                 <Link className="linkFavorites__link" to="/favorites">
-                    <FontAwesomeIcon icon={HeartFilled}/>
+                    <FontAwesomeIcon icon={filledHeart}/>
                 </Link>
             </div>
             
