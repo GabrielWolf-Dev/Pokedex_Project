@@ -14,8 +14,6 @@ export default function CardPokemons({ namePokemon }){
         setPokemon([data]);
     } ,[]);
 
-    //Fazer aparecer os nomes
-
     return(
         <>
             <section className="cardsPokemons">
