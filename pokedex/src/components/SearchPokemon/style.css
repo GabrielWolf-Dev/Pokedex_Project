@@ -23,3 +23,9 @@ form {
     outline: none;
     border-radius: 12px;
 }
+
+@media screen and (max-width: 768px) {
+    form {
+        margin: 32px auto 24px auto;
+    }
+}

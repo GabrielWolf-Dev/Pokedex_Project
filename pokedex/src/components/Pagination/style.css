@@ -1,7 +1,7 @@
 .pagination {
     width: 100%;
     max-width: 600px;
-    margin-top: 48px;
+    margin: 48px -4px 0 -4px;
     display: inline-block;
 }
 
@@ -15,8 +15,7 @@
 .pagination__page {
     width: 42px;
     height: 42px;
-    margin-top: 16px;
-    margin-right: 24px;
+    margin: 16px 11px 0 11px;
     background-color: #5CC8F2;
     border-radius: 12px;
     position: relative;
@@ -31,8 +30,28 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
 }
 
 .pagination__page:hover{
     color: #333333;
+}
+
+@media screen and (max-width: 768px) {
+    .pagination {
+        width: 100%;
+        max-width: 600px;
+        margin: 24px -4px 0 -4px;
+        display: inline-block;
+    }
+
+    .pagination__page {
+        width: 36px;
+        height: 36px;
+        margin: 16px 8px 0 8px;
+        font-size: 16px;
+    }
 }

@@ -3,6 +3,7 @@
     max-width: 1000px;
     margin-top: 32px;
     display: inline-block;
+    padding: 0 2%;
 }
 
 .cardsPokemons__space {
@@ -43,6 +44,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
 }
 
 .card__content {
@@ -104,4 +109,34 @@
     vertical-align: 14px;
     float: right;
     padding-right: 4px;
+}
+
+@media screen and (max-width: 768px) {
+    div.card__borderImg {
+        max-width: 120px;
+        height: 120px;
+    }
+    
+    div.card__borderImg img {
+        max-width: 100px;
+        height: 100px;
+    }
+
+    .card__content h2 {
+        font-size: 18px;
+    }
+    
+    .card__content p {
+        font-size: 16px;
+    }
+
+    .content__bgBar label {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .cardsPokemons__card {
+        max-width: 250px;
+    }
 }

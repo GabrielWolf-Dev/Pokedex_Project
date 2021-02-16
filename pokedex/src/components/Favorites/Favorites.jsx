@@ -32,7 +32,7 @@ export default function Favorites(){
                 </Link>
             </div>
             <section className="container">
-                <h1 className="title">Pokemon Favorito</h1>
+                <h1 className="titleHome">Pokemon Favorito</h1>
 
                 <div className="cardsFavPokemons">
                     <div className="cardsFavPokemons__space">

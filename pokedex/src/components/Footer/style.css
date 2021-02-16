@@ -39,21 +39,17 @@ footer {
     font-size: 24px;
 }
 
-.linkFavorites {
-    width: 40px;
-    height: 40px;
-    background-color: #5CC8F2;
-    border-radius: 50%;
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-}
+@media screen and (max-width: 768px) {
+    .credits__api a {
+        font-size: 14px;
+    }
 
-.linkFavorites__link {                                                                                                                      
-    text-decoration: none;
-    font-size: 22px;
-    color: white;
+    .credits__author a {
+        font-size: 16px;
+        margin-right: 0;
+    }
+
+    .credits__author p {
+        font-size: 14px;
+    }
 }

@@ -9,6 +9,7 @@
     display: flex; 
     justify-content: center;
     align-items: center;
+    z-index: 1;
 }
 
 .linkHome__link{                                                                                                                      
@@ -17,7 +18,7 @@
     color: white;
 }
 
-.title {
+.titleHome {
     font-size: 30px;
     font-weight: 700;
     color: #333333;
@@ -69,6 +70,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
 }
 
 .card__content {
@@ -93,4 +98,29 @@
     right: 16px;
     font-size: 26px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 420px) {
+    h1.titleHome {
+        font-size: 24px;
+    }
+
+    .linkHome {
+        width: 32px;
+        height: 32px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .linkHome__link{                                                                                                                      
+        font-size: 16px;
+    }
 }
