@@ -19,9 +19,14 @@ export default function Home(){
 
     useEffect(async () => {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=500&offset=2`);
-        const data = await response.json();
 
-        setPokemons(data.results);
+        try{
+            const data = await response.json();
+            return setPokemons(data.results);
+        }catch(error){
+            throw new Error(error);
+        }
+
     }, []);
     
     const indexLastPoke = currentPage * pokePerPage;

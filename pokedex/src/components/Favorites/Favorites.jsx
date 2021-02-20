@@ -16,9 +16,14 @@ export default function Favorites(){
     useEffect(async() => {
         if(pokemonsFavorites !== null){
             const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonsFavorites}`);      
-            const data = await response.json();
-    
-            setPokemon([data]);
+
+            try{
+                const data = await response.json();
+                return setPokemon([data]);
+            }catch(error){
+                throw new Error(error);
+            }
+
         }
     } ,[]);
 

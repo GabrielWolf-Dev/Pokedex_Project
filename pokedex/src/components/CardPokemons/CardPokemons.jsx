@@ -11,9 +11,14 @@ export default function CardPokemons({ namePokemon }){
 
     useEffect(async() => {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${namePokemon}`);
-        const data = await response.json();
-    
-        setPokemon([data]);
+
+        try{
+            const data = await response.json();
+            return setPokemon([data]);
+        }catch(error){
+            throw new Error(error);
+        }
+
     } ,[]);
 
     return(
