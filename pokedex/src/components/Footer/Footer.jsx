@@ -9,10 +9,10 @@ export default function Footer(){
         <footer>
             <section className="credits">
                 <div className="credits__api">
-                    <a target="_blank" href="https://pokeapi.co/">API Link</a>
+                    <a target="blank" href="https://pokeapi.co/">API Link</a>
                 </div>
                 <div className="credits__author">
-                    <a target="_blank" href="https://github.com/GabrielWolf-Dev">
+                    <a target="blank" href="https://github.com/GabrielWolf-Dev">
                         <p>By Gabriel Wolf</p>
                         <FontAwesomeIcon icon={faGithub}/>
                     </a>
