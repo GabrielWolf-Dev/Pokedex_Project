@@ -9,6 +9,10 @@ export default function CardPokemons({ namePokemon }){
     const [pokemon, setPokemon] = useState([]);
     const [favorites, setFavorites] = useState(false);
 
+    const pokemons = JSON.parse(localStorage.getItem("name")) !== null
+    ? JSON.parse(localStorage.getItem("name"))
+    : [];
+
     useEffect(() => {
         async function fetchData() {
             const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${namePokemon}`);
@@ -37,16 +41,12 @@ export default function CardPokemons({ namePokemon }){
                                         className="card__iconFavorite" 
                                         onClick={() => {
                                             setFavorites(true);
-                                            JSON.stringify(localStorage.setItem('name', namePokemon));
+                                            localStorage.setItem('name', JSON.stringify([...pokemons, namePokemon]));
                                         }} 
                                         icon={HeartUnfilled}
                                     /> :
                                     <FontAwesomeIcon 
-                                        className="card__iconFavorite" 
-                                        onClick={() => {
-                                            setFavorites(false);
-                                            localStorage.removeItem("name");
-                                        }} 
+                                        className="card__iconFavorite"
                                         icon={HeartFilled}
                                     />
                                 }

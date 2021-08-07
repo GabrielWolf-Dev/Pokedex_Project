@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -21,9 +21,9 @@ export default function Description({ currentPokemons, setNamePokemon }){
             <div className="description__pokemonList">
                 {currentPokemons.map((pokemons, index) => {
                     return(
-                        <p key={index} className="pokemonList_name" onClick={selectPokemon}>
+                        <button key={index} className="pokemonList_name" onClick={selectPokemon}>
                             {pokemons}
-                        </p>
+                        </button>
                     );
                 })}
             </div>

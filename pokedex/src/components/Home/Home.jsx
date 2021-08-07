@@ -17,16 +17,16 @@ export default function Home(){
     const [pokePerPage] = useState(45);
     const [currentPage, setCurrentPage] = useState(1);
 
-    useEffect(async () => {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=500&offset=2`);
-
-        try{
-            const data = await response.json();
-            return setPokemons(data.results);
-        }catch(error){
-            throw new Error(error);
-        }
-
+    useEffect(() => {
+        (async function() {
+            try{
+                const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=500&offset=2`);
+                const data = await response.json();
+                return setPokemons(data.results);
+            }catch(error){
+                throw new Error(error);
+            }
+        })();
     }, []);
     
     const indexLastPoke = currentPage * pokePerPage;
@@ -49,9 +49,8 @@ export default function Home(){
                 <SearchPokemon setNamePokemon={setNamePokemon}/>
                 {
                     pokemons.map((pokemon, index) => {
-                        if(namePokemon === pokemon.name){
+                        if(namePokemon === pokemon.name)
                             return <CardPokemons pokemons={pokemons} namePokemon={namePokemon} key={index} />;
-                        }
                     })
                 }
                 <Description setNamePokemon={setNamePokemon} currentPokemons={currentPokemon} />

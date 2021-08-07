@@ -23,7 +23,7 @@
     width: 100%;
     padding: 24px 2%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -31,12 +31,13 @@
 .pokemonList_name {
     max-width: 200px;
     width: 100%;
-    padding: 16px 0;
+    padding: 18px 0;
     text-align: center;
+    border: 0;
     color: white;
     background-color: #333333;
     font-size: 18px;
-    margin: 0 16px;
+    margin: 8px 16px;
     border-radius: 12px;
     cursor: pointer;
     transition: all ease 0.3s;

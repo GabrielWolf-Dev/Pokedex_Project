@@ -11,22 +11,21 @@ import MessageWarning from '../MessageWarning/MessageWarning';
 export default function Favorites(){
     const [pokemon, setPokemon] = useState([]);
     const [favorites, setFavorites] = useState(true);
-    const pokemonsFavorites = localStorage.getItem('name');
+    const [pokemonsFavorites, setPokemonsFavorites] = useState(JSON.parse(localStorage.getItem('name')));
 
-    useEffect(async() => {
+    useEffect(() => {
         if(pokemonsFavorites !== null){
-            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonsFavorites}`);      
-
-            try{
-                const data = await response.json();
-                return setPokemon([data]);
-            }catch(error){
-                throw new Error(error);
-            }
-
+            pokemonsFavorites.forEach(async pokemonFavorite => {    
+                try{
+                    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonFavorite}`);  
+                    const data = await response.json();
+                    return setPokemon((pokemon) => [...pokemon, data]);
+                }catch(error){
+                    throw new Error(error);
+                }
+            });
         }
-    } ,[]);
-
+    }, []);
     return(
         <>
             <div className="linkHome">
@@ -47,11 +46,19 @@ export default function Favorites(){
                                 {
                                     favorites === true ? 
                                     <FontAwesomeIcon 
-                                        className="card__iconFavorite" 
-                                        onClick={() => {
-                                            setFavorites(false);
-                                            localStorage.removeItem("name");
-                                            document.querySelector('.cardsFavPokemons').style.display = "none";
+                                        className="card__iconFavorite"
+                                        data-pokemon={pokemon.name}
+                                        onClick={(e) => {
+                                            const $svg = e.target.closest('.card__iconFavorite');
+                                            const cardPoke = e.target.closest('.cardsPokemons__card');
+                                            const pokemonSelected = $svg.dataset.pokemon;
+                                            const pokeFavUpdate = pokemonsFavorites;
+
+                                            pokeFavUpdate.splice(pokemonsFavorites.indexOf(pokemonSelected), 1);
+                                            console.log(pokeFavUpdate);
+                                            setPokemonsFavorites(pokeFavUpdate.length === 0 ? null : pokeFavUpdate);
+                                            localStorage.setItem('name', JSON.stringify(pokemonsFavorites));
+                                            cardPoke.style.display = "none";
                                         }} 
                                         icon={HeartFilled}
                                     /> :
@@ -64,7 +71,7 @@ export default function Favorites(){
                                     />
                                 }
                                 <div className="card__borderImg">
-                                    <img src={pokemon.sprites.front_default} />
+                                    <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                                 </div>
                                 <div className="card__content">
                                     <h2>{pokemon.name}</h2>
@@ -93,7 +100,7 @@ export default function Favorites(){
                         );
                     })}
                     {
-                       pokemonsFavorites === null ? <MessageWarning /> : false
+                       pokemonsFavorites === null || pokemonsFavorites.length === 0 ? <MessageWarning /> : false
                     }
                     </div>
                 </div>
